@@ -86,7 +86,8 @@ const products = section["data"]["top_product"];
 
 const currentTrends: trend[] = products.map(({ name, images, count }) => {
   const image = `https://cf.shopee.co.id/file/${images[0]}`;
-  const timestamp = new Date();
+  const timestamp = new Date().toISOString();
+
   return {
     keyword: name,
     count,
