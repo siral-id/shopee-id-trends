@@ -71,27 +71,34 @@ interface trend {
   image: string;
   count: number;
   source: string;
+  timestamp: Date;
 }
 
 const filename = Deno.args[0]; // Same name as downloaded_filename
-const data: IShopeeTrendResponse = await readJSON(filename);
+const response: IShopeeTrendResponse = await readJSON(filename);
 
-if (data["error"] !== 0) {
-  console.log("Error", data["error"]);
+if (response["error"] !== 0) {
+  console.log("Error", response["error"]);
 }
 
-const section = data["data"]["sections"][0];
+const section = response["data"]["sections"][0];
 const products = section["data"]["top_product"];
 
-const trends: trend[] = products.map(({ name, images, count }) => {
+const currentTrends: trend[] = products.map(({ name, images, count }) => {
   const image = `https://cf.shopee.co.id/file/${images[0]}`;
+  const timestamp = new Date();
   return {
     keyword: name,
     count,
     image,
     source: "SHOPEE",
+    timestamp,
   };
 });
 
-const newfile = `shopee_trends.json`;
-await writeJSON(newfile, trends);
+const output = `shopee_trends.json`;
+const existingTrends = await readJSON(output);
+
+const trends = existingTrends.concat(currentTrends)
+
+await writeJSON(output, trends);
