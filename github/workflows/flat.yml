@@ -1,0 +1,27 @@
+name: shopee-co-id-trends
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+
+jobs:
+  scheduled:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup deno
+        uses: denoland/setup-deno@main
+        with:
+          deno-version: v1.10.x
+      - name: Check out repo
+        uses: actions/checkout@v2
+      # The Flat Action step. We fetch the data in the http_url and save it as downloaded_filename
+      - name: Fetch data
+        uses: githubocto/flat@v3
+        with:
+          http_url: https://shopee.co.id/api/v4/recommend/recommend?bundle=top_products_homepage&limit=1000
+          downloaded_filename: data.json
+          postprocess: postprocess.ts
