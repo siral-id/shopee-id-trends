@@ -71,7 +71,7 @@ interface trend {
   image: string;
   count: number;
   source: string;
-  timestamp: Date;
+  timestamp: string;
 }
 
 const filename = Deno.args[0]; // Same name as downloaded_filename
