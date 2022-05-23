@@ -26,3 +26,4 @@ jobs:
           http_url: https://shopee.co.id/api/v4/recommend/recommend?bundle=top_products_homepage&limit=1000
           downloaded_filename: data.json
           postprocess: postprocess.ts
+          mask: true
