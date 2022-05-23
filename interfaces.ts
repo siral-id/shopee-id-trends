@@ -1,11 +1,11 @@
-interface IShopeeTrendDataSectionIndex {
+export interface IShopeeTrendDataSectionIndex {
   data_type: string;
   key: string;
   filtered?: string;
   filtered_dunit?: string;
 }
 
-interface IShopeeTrendDataSectionDataTopProduct {
+export interface IShopeeTrendDataSectionDataTopProduct {
   info: string;
   count: number;
   data_type: string;
@@ -16,7 +16,7 @@ interface IShopeeTrendDataSectionDataTopProduct {
   list?: string[];
 }
 
-interface IShopeeTrendDataSectionData {
+export interface IShopeeTrendDataSectionData {
   item?: string;
   keyword: string[];
   ads?: string;
@@ -40,7 +40,7 @@ interface IShopeeTrendDataSectionData {
   food_item?: string;
 }
 
-interface IShopeeTrendDataSection {
+export interface IShopeeTrendDataSection {
   total: number;
   key: string;
   index: IShopeeTrendDataSectionIndex[];
@@ -48,7 +48,7 @@ interface IShopeeTrendDataSection {
   item_card_type: string;
 }
 
-interface IShopeeTrendData {
+export interface IShopeeTrendData {
   update_time: number;
   version: string;
   sections: IShopeeTrendDataSection[];
@@ -57,14 +57,14 @@ interface IShopeeTrendData {
   misc_info?: string;
 }
 
-interface IShopeeTrendResponse {
+export interface IShopeeTrendResponse {
   bff_meta?: string;
   error: number;
   error_msg?: string;
   data: IShopeeTrendData;
 }
 
-interface trend {
+export interface ITrend {
   keyword: string;
   image: string;
   count: number;
