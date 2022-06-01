@@ -27,3 +27,5 @@ jobs:
           downloaded_filename: data.json
           postprocess: postprocess.ts
           mask: true
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
