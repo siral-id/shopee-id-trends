@@ -1,7 +1,11 @@
 import { readJSON } from "https://deno.land/x/flat/mod.ts";
-import { IShopeeTrendResponse, ITrend, ITrendSchema } from "./interfaces.ts";
+import { IShopeeTrendResponse } from "./interfaces.ts";
 import { appendJSON } from "https://raw.githubusercontent.com/siral-id/deno-utility/main/utility.ts";
 import { getMongoClient } from "https://raw.githubusercontent.com/siral-id/deno-utility/main/database.ts";
+import {
+  ITrend,
+  ITrendSchema,
+} from "https://raw.githubusercontent.com/siral-id/deno-utility/main/interfaces.ts";
 
 const filename = Deno.args[0]; // Same name as downloaded_filename
 const response: IShopeeTrendResponse = await readJSON(filename);

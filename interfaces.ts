@@ -1,5 +1,3 @@
-import { Bson } from "https://deno.land/x/mongo@v0.30.0/mod.ts";
-
 export interface IShopeeTrendDataSectionIndex {
   data_type: string;
   key: string;
@@ -64,16 +62,4 @@ export interface IShopeeTrendResponse {
   error: number;
   error_msg?: string;
   data: IShopeeTrendData;
-}
-
-export interface ITrend {
-  keyword: string;
-  image: string;
-  count: number;
-  source: string;
-  timestamp: string;
-}
-
-export interface ITrendSchema extends ITrend {
-  _id: Bson.ObjectId;
 }
