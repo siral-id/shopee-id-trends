@@ -10,7 +10,7 @@ const mongoUri = Deno.env.get("MONGO_URI");
 if (!mongoUri) throw new Error("MONGO_URI not found");
 
 const client = await getMongoClient(mongoUri);
-const collection = client.database().collection<ITrendSchema>("trends");
+const trendCollection = client.database().trendCollection<ITrendSchema>("trends");
 
 const filename = Deno.args[0]; // Same name as downloaded_filename
 const response: IShopeeTrendResponse = await readJSON(filename);
@@ -35,4 +35,4 @@ const trends: ITrend[] = products.map(({ name, images, count }) => {
   };
 });
 
-await collection.insertMany(trends);
+await trendCollection.insertMany(trends);
