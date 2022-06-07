@@ -1,16 +1,14 @@
+import { Octokit } from "https://cdn.skypack.dev/octokit?dts";
 import { readJSON } from "https://deno.land/x/flat/mod.ts";
 import { IShopeeTrendResponse } from "./interfaces.ts";
-import { getMongoClient } from "https://raw.githubusercontent.com/siral-id/deno-utility/main/database.ts";
 import {
-  ITrend,
-  ITrendSchema,
+  ITrend
 } from "https://raw.githubusercontent.com/siral-id/deno-utility/main/interfaces.ts";
 
-const mongoUri = Deno.env.get("MONGO_URI");
-if (!mongoUri) throw new Error("MONGO_URI not found");
+const ghToken = Deno.env.get("GH_TOKEN");
+if (!ghToken) throw new Error("GH_TOKEN not found");
 
-const client = await getMongoClient(mongoUri);
-const trendCollection = client.database().collection<ITrendSchema>("trends");
+const octokit = new Octokit({ auth: ghToken });
 
 const filename = Deno.args[0]; // Same name as downloaded_filename
 const response: IShopeeTrendResponse = await readJSON(filename);
@@ -35,4 +33,9 @@ const trends: ITrend[] = products.map(({ name, images, count }) => {
   };
 });
 
-await trendCollection.insertMany(trends);
+await octokit.rest.issues.create({
+  owner: "siral-id",
+  repo: "database",
+  title: 'WRITE_TRENDS_SHOPEE',
+  body: `${trends}`
+});
