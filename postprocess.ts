@@ -1,5 +1,6 @@
 import { Octokit } from "https://cdn.skypack.dev/octokit?dts";
 import { readJSON } from "https://deno.land/x/flat/mod.ts";
+import { v4 } from "https://deno.land/std/uuid/mod.ts"
 import { IShopeeTrendResponse } from "./interfaces.ts";
 import {
   ITrend
@@ -33,9 +34,11 @@ const trends: ITrend[] = products.map(({ name, images, count }) => {
   };
 });
 
+const uuid=v4.generate();
+
 await octokit.rest.issues.create({
   owner: "siral-id",
   repo: "database",
-  title: 'WRITE_TRENDS_SHOPEE',
-  body: `${trends}`
+  title: `WRITE_TRENDS_SHOPEE_${uuid}`,
+  body: JSON.stringify(trends)
 });
