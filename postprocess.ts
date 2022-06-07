@@ -5,7 +5,7 @@ import { IShopeeTrendResponse } from "./interfaces.ts";
 import {
   ITrend,
 } from "https://raw.githubusercontent.com/siral-id/deno-utility/main/interfaces.ts";
-import { Source } from "https://raw.githubusercontent.com/siral-id/deno-utility/main/interfaces.ts";
+import { Source } from "https://raw.githubusercontent.com/siral-id/deno-utility/main/enum.ts";
 
 const ghToken = Deno.env.get("GH_TOKEN");
 if (!ghToken) throw new Error("GH_TOKEN not found");
