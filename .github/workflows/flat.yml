@@ -29,3 +29,4 @@ jobs:
           mask: true
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
