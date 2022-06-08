@@ -39,7 +39,7 @@ const uuid = v4.generate();
 
 await octokit.rest.issues.create({
   owner: "siral-id",
-  repo: "database",
+  repo: "core",
   title: `WRITE_TRENDS_SHOPEE_${uuid}`,
   body: JSON.stringify(trends),
 });
