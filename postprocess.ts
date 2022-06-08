@@ -43,3 +43,5 @@ await octokit.rest.issues.create({
   title: `WRITE_TRENDS_SHOPEE_${uuid}`,
   body: JSON.stringify(trends),
 });
+
+Deno.exit()
