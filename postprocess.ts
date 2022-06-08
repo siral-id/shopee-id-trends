@@ -3,7 +3,7 @@ import { readJSON } from "https://deno.land/x/flat/mod.ts";
 import { v4 } from "https://deno.land/std/uuid/mod.ts";
 import { IShopeeTrendResponse } from "./interfaces.ts";
 import {
-  ITrend,
+  ICreateTrend,
   Source,
 } from "https://raw.githubusercontent.com/siral-id/core/main/mod.ts";
 
@@ -22,7 +22,7 @@ if (response["error"] !== 0) {
 const section = response["data"]["sections"][0];
 const products = section["data"]["top_product"];
 
-const trends: ITrend[] = products.map(({ name, images, count }) => {
+const trends: ICreateTrend[] = products.map(({ name, images, count }) => {
   const image = `https://cf.shopee.co.id/file/${images[0]}`;
   const timestamp = new Date().toISOString();
 
