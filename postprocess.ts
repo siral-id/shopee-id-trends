@@ -7,9 +7,9 @@ import {
   Source,
 } from "https://raw.githubusercontent.com/siral-id/core/main/mod.ts";
 
-export function setupOctokit(octokit: Octokit, ghToken?: string): Octokit {
+export function setupOctokit(ghToken?: string): Octokit {
   if (!ghToken) throw new Error("GH_TOKEN not found");
-  return octokit({ auth: ghToken });
+  return new Octokit({ auth: ghToken });
 }
 
 export async function loadResponse(
