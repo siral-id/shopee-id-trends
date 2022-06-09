@@ -1,5 +1,6 @@
-import { ICreateTrend, loadResponse, serializeResponse } from "./mod.ts";
+import { loadResponse, serializeResponse } from "./mod.ts";
 import {
+  ICreateTrend,
   setupOctokit,
   upload,
 } from "https://raw.githubusercontent.com/siral-id/core/main/mod.ts";
