@@ -27,7 +27,7 @@ jobs:
         with:
           http_url: https://shopee.co.id/api/v4/recommend/recommend?bundle=top_products_homepage&limit=1000
           downloaded_filename: data.json
-          postprocess: postprocess.ts
+          postprocess: cli.ts
           mask: true
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
