@@ -1,9 +1,8 @@
+import { loadResponse, serializeResponse } from "./mod.ts";
 import {
-  loadResponse,
-  serializeResponse,
   setupOctokit,
   upload,
-} from "./mod.ts";
+} from "https://raw.githubusercontent.com/siral-id/core/main/mod.ts";
 
 const ghToken = Deno.env.get("GH_TOKEN");
 const octokit = setupOctokit(ghToken);
