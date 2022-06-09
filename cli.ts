@@ -1,4 +1,4 @@
-import { loadResponse, serializeResponse } from "./mod.ts";
+import { ICreateTrend, loadResponse, serializeResponse } from "./mod.ts";
 import {
   setupOctokit,
   upload,
@@ -12,6 +12,6 @@ const response = await loadResponse(filename);
 
 const serializedData = serializeResponse(response);
 
-await upload(octokit, serializedData);
+await upload<ICreateTrend[]>(octokit, serializedData, "WRITE_SHOPEE_TRENDS");
 
 Deno.exit();
