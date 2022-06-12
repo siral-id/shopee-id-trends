@@ -25,7 +25,7 @@ const uploadWithRetry = async <T>(
     await upload<T>(
       octokit,
       data,
-      "WRITE_SHOPEE_TRENDS",
+      "WRITE_TRENDS_SHOPEE",
     );
   } catch (error) {
     await sleep(retryCount);
