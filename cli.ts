@@ -4,6 +4,7 @@ import {
   setupOctokit,
   sleep,
   upload,
+  Pipeline,
 } from "https://raw.githubusercontent.com/siral-id/core/main/mod.ts";
 
 const ghToken = Deno.env.get("GH_TOKEN");
@@ -25,7 +26,7 @@ const uploadWithRetry = async <T>(
     await upload<T>(
       octokit,
       data,
-      "WRITE_TRENDS_SHOPEE",
+      Pipeline.ShopeeTrends
     );
   } catch (error) {
     await sleep(retryCount);
